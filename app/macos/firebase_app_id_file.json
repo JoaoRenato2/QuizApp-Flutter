@@ -1,7 +1,7 @@
 {
   "file_generated_by": "FlutterFire CLI",
   "purpose": "FirebaseAppID & ProjectID for this Firebase app in this directory",
-  "GOOGLE_APP_ID": "1:1016629374785:ios:f6afb99d1d065ac6cebbc0",
-  "FIREBASE_PROJECT_ID": "quiz-app-esdhc",
-  "GCM_SENDER_ID": "1016629374785"
+  "GOOGLE_APP_ID": "1:654336453013:ios:9a08699a4e63f576d72e9c",
+  "FIREBASE_PROJECT_ID": "quizapp-esdhc",
+  "GCM_SENDER_ID": "654336453013"
 }
