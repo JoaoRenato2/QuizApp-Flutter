@@ -8,10 +8,11 @@ import 'package:get/get.dart';
 
 import 'data_uploader_screen.dart';
 
-Future<void> main() async{
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(const MyApp());
+  //runApp(const MyApp());
+  runApp(GetMaterialApp(home: DataUploaderScreen()));
 }
 
 class MyApp extends StatelessWidget {
@@ -24,14 +25,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter App',
       theme: ThemeData(
-        primaryColor: kPrimaryColor,
-        scaffoldBackgroundColor: Colors.white
-        
-      ),
+          primaryColor: kPrimaryColor, scaffoldBackgroundColor: Colors.white),
       home: WelcomeScreen(),
     );
   }
 }
-
-
- 
