@@ -67,7 +67,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '654336453013',
     projectId: 'quizapp-esdhc',
     storageBucket: 'quizapp-esdhc.appspot.com',
-    iosClientId: '654336453013-5er0efmehrv1du3adfmp1qomfl1e0rs4.apps.googleusercontent.com',
+    iosClientId:
+        '654336453013-5er0efmehrv1du3adfmp1qomfl1e0rs4.apps.googleusercontent.com',
     iosBundleId: 'com.example.app',
   );
 
@@ -77,7 +78,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '654336453013',
     projectId: 'quizapp-esdhc',
     storageBucket: 'quizapp-esdhc.appspot.com',
-    iosClientId: '654336453013-5er0efmehrv1du3adfmp1qomfl1e0rs4.apps.googleusercontent.com',
+    iosClientId:
+        '654336453013-5er0efmehrv1du3adfmp1qomfl1e0rs4.apps.googleusercontent.com',
     iosBundleId: 'com.example.app',
   );
 }
