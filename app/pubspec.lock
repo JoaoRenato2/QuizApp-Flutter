@@ -149,7 +149,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-<<<<<<< HEAD
   google_fonts:
     dependency: "direct main"
     description:
@@ -171,7 +170,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.2"
-=======
   get:
     dependency: "direct main"
     description:
@@ -179,7 +177,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.6.5"
->>>>>>> 9229b4f66f3abc10fb3a34c993f24f9d1b35b047
   js:
     dependency: transitive
     description:
