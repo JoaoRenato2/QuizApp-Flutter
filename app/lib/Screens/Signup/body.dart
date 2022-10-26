@@ -1,5 +1,6 @@
 import 'package:app/Screens/Login/components/body.dart';
 import 'package:app/Screens/Signup/background.dart';
+import 'package:app/auth_controller.dart';
 import 'package:app/components/rounded_button.dart';
 import 'package:app/constants.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,8 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    var emailController = TextEditingController();
+    var passwordController = TextEditingController();
 
     // TODO: implement build
     return Background(
@@ -41,6 +44,7 @@ class Body extends StatelessWidget {
                         color: kPrimaryLightColor.withOpacity(0.2))
                   ]),
               child: TextField(
+                controller: emailController,
                 decoration: InputDecoration(
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
@@ -73,6 +77,7 @@ class Body extends StatelessWidget {
                         color: kPrimaryLightColor.withOpacity(0.2))
                   ]),
               child: TextField(
+                controller: passwordController,
                 decoration: InputDecoration(
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
@@ -92,7 +97,10 @@ class Body extends StatelessWidget {
           ),
           RoundedButton(
             text: "SIGNUP",
-            press: () {},
+            press: () {
+              AuthController.instance.register(
+                  emailController.text.trim(), passwordController.text.trim());
+            },
           ),
           AlreadyHaveAnAccountCheck(login: false),
         ],
