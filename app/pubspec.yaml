@@ -37,11 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_svg: ^1.1.5
   firebase_core: ^2.1.0
-<<<<<<< HEAD
-  google_fonts: ^3.0.1
-=======
   cloud_firestore: ^4.0.2
->>>>>>> 9229b4f66f3abc10fb3a34c993f24f9d1b35b047
 
 dev_dependencies:
   flutter_test:
@@ -69,11 +65,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
-<<<<<<< HEAD
-    
-=======
     - assets/DB/papers/
->>>>>>> 9229b4f66f3abc10fb3a34c993f24f9d1b35b047
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
