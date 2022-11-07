@@ -1,5 +1,7 @@
 import 'package:app/Screens/Login/components/body.dart';
+import 'package:app/Screens/Login/login_screen.dart';
 import 'package:app/Screens/Signup/background.dart';
+import 'package:app/auth_controller.dart';
 import 'package:app/components/rounded_button.dart';
 import 'package:app/constants.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +14,8 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    var emailController = TextEditingController();
+    var passwordController = TextEditingController();
 
     // TODO: implement build
     return Background(
@@ -41,7 +45,13 @@ class Body extends StatelessWidget {
                         color: kPrimaryLightColor.withOpacity(0.2))
                   ]),
               child: TextField(
+                controller: emailController,
                 decoration: InputDecoration(
+                    hintText: "Email",
+                    prefixIcon: Icon(
+                      Icons.email,
+                      color: Colors.deepPurpleAccent,
+                    ),
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
                         borderSide:
@@ -73,7 +83,13 @@ class Body extends StatelessWidget {
                         color: kPrimaryLightColor.withOpacity(0.2))
                   ]),
               child: TextField(
+                controller: passwordController,
                 decoration: InputDecoration(
+                    hintText: "Senha",
+                    prefixIcon: Icon(
+                      Icons.password_sharp,
+                      color: Colors.deepPurpleAccent,
+                    ),
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
                         borderSide:
@@ -92,9 +108,24 @@ class Body extends StatelessWidget {
           ),
           RoundedButton(
             text: "SIGNUP",
-            press: () {},
+            press: () {
+              AuthController.instance.register(
+                  emailController.text.trim(), passwordController.text.trim());
+            },
           ),
-          AlreadyHaveAnAccountCheck(login: false),
+          AlreadyHaveAnAccountCheck(
+            login: false,
+            press: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return LoginScreen();
+                  },
+                ),
+              );
+            },
+          ),
         ],
       ),
     );

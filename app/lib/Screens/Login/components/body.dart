@@ -27,8 +27,6 @@ class Body extends StatelessWidget {
                 "assets/icons/login.svg",
                 height: size.height * 0.35,
               ),
-
-              
               SizedBox(
                 height: 20,
               ),
@@ -49,6 +47,11 @@ class Body extends StatelessWidget {
                       ]),
                   child: TextField(
                     decoration: InputDecoration(
+                        hintText: "Email",
+                        prefixIcon: Icon(
+                          Icons.email,
+                          color: Colors.deepPurpleAccent,
+                        ),
                         focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30),
                             borderSide: BorderSide(
@@ -81,6 +84,11 @@ class Body extends StatelessWidget {
                       ]),
                   child: TextField(
                     decoration: InputDecoration(
+                        hintText: "Senha",
+                        prefixIcon: Icon(
+                          Icons.password_sharp,
+                          color: Colors.deepPurpleAccent,
+                        ),
                         focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30),
                             borderSide: const BorderSide(
