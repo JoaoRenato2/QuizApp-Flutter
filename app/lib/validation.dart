@@ -16,7 +16,7 @@ class Validation {
     if (senha.isEmpty) {
       return 'Entre com sua senha';
     }
-    if (senha.length < 4) {
+    if (senha.length < 6) {
       return 'A senha deve ter no mínimo 4 dígitos';
     }
     return null;

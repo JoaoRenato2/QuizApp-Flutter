@@ -9,9 +9,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class Body extends StatelessWidget {
+  final Widget child;
   final _formKey = GlobalKey<FormState>();
   final Validation validar = Validation();
-  final Widget child;
 
   Body({super.key, required this.child});
   @override
@@ -21,9 +21,9 @@ class Body extends StatelessWidget {
     var passwordController = TextEditingController();
 
     // TODO: implement build
-    return Background(
-      child: Form(
-        key: _formKey,
+    return Form(
+      key: _formKey,
+      child: Background(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -50,25 +50,25 @@ class Body extends StatelessWidget {
                           color: kPrimaryLightColor.withOpacity(0.2))
                     ]),
                 child: TextFormField(
+                  validator: (email) => validar.campoEmail(email.toString()),
                   controller: emailController,
                   decoration: InputDecoration(
-                      hintText: "Email",
-                      prefixIcon: Icon(
-                        Icons.email,
-                        color: Colors.deepPurpleAccent,
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide: BorderSide(
-                              color: kPrimaryLightColor, width: 1.0)),
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide: BorderSide(
-                              color: kPrimaryLightColor, width: 1.0)),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30)),
-                          ),
-                  validator: (email) => validar.campoEmail(email.toString()),
+                    hintText: "Email",
+                    prefixIcon: Icon(
+                      Icons.email,
+                      color: Colors.deepPurpleAccent,
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide:
+                            BorderSide(color: kPrimaryLightColor, width: 1.0)),
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide:
+                            BorderSide(color: kPrimaryLightColor, width: 1.0)),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30)),
+                  ),
                 ),
               ),
             ),
@@ -89,24 +89,26 @@ class Body extends StatelessWidget {
                           offset: Offset(1, 1),
                           color: kPrimaryLightColor.withOpacity(0.2))
                     ]),
-                child: TextField(
+                child: TextFormField(
                   controller: passwordController,
                   decoration: InputDecoration(
-                      hintText: "Senha",
-                      prefixIcon: Icon(
-                        Icons.password_sharp,
-                        color: Colors.deepPurpleAccent,
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide: const BorderSide(
-                              color: Colors.white, width: 1.0)),
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide: const BorderSide(
-                              color: Colors.white, width: 1.0)),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30))),
+                    hintText: "Senha",
+                    prefixIcon: Icon(
+                      Icons.password_sharp,
+                      color: Colors.deepPurpleAccent,
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide:
+                            const BorderSide(color: Colors.white, width: 1.0)),
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide:
+                            const BorderSide(color: Colors.white, width: 1.0)),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30)),
+                  ),
+                  validator: (senha) => validar.campoSenha(senha.toString()),
                 ),
               ),
             ),
@@ -116,6 +118,13 @@ class Body extends StatelessWidget {
             RoundedButton(
               text: "SIGNUP",
               press: () {
+                if (_formKey.currentState!.validate()) {
+                  AuthController.instance.register(emailController.text.trim(),
+                      passwordController.text.trim());
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Usuario Criado')),
+                  );
+                }
                 AuthController.instance.register(emailController.text.trim(),
                     passwordController.text.trim());
               },
