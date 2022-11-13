@@ -1,4 +1,5 @@
 import 'package:app/Screens/Login/components/backgorund.dart';
+import 'package:app/Screens/Quiz/quiz.dart';
 import 'package:app/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -27,6 +28,14 @@ class SelectionQuiz extends StatelessWidget {
                 child: InkWell(
                   splashColor: Colors.blue.withAlpha(30),
                   onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return Quiz();
+                        },
+                      ),
+                    );
                     debugPrint('Card tapped.');
                   },
                   child: SizedBox(
