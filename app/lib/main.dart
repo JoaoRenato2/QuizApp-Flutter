@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter App',
       theme: ThemeData(
           primaryColor: kPrimaryColor, scaffoldBackgroundColor: Colors.white),
-      home: SelectionQuiz(),
+      home: WelcomeScreen(),
     );
   }
 }

@@ -117,7 +117,7 @@ class Body extends StatelessWidget {
                   controller: passwordController,
                   decoration: InputDecoration(
                     hintText: "Senha",
-                    prefixIcon: Icon(
+                    prefixIcon: const Icon(
                       Icons.password_sharp,
                       color: Colors.deepPurpleAccent,
                     ),
@@ -138,7 +138,7 @@ class Body extends StatelessWidget {
                       error = true;
                       return null;
                     }
-                    if (senha!.length < 6) {
+                    if (senha.length < 6) {
                       snackBar1 = "A senha deve ter no mínimo 6 dígitos";
                       error = true;
                       return null;
