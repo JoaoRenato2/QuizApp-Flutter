@@ -1,0 +1,138 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:app/models/question.dart';
+
+class Quiz extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _Quiz();
+  }
+}
+
+class _Quiz extends State<Quiz> {
+  List<Question> questions = [
+    Question("Porcos podem voar?", false),
+    Question("Bill Gates é o fundador da Microsoft", true),
+    Question("Cachorros tem 6 pernas", false),
+    Question("Pássaros tem 2 asas", true),
+    Question("Golfinhos não enxergam", false),
+  ];
+
+  int questionIndex = 0;
+  String answer = "";
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        title: "Quiz",
+        home: Scaffold(
+          backgroundColor: Colors.white,
+          body: Column(
+            children: <Widget>[
+              Container(
+                height: 600.0,
+                color: Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 5.0),
+                        child: Text(
+                          "Questão # ${questionIndex + 1}",
+                          style: const TextStyle(
+                              color: Colors.grey,
+                              fontWeight: FontWeight.w900,
+                              fontSize: 16.0),
+                        ),
+                      ),
+                      Text(
+                        questions[questionIndex].question,
+                        style: const TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w900,
+                            fontSize: 20.0),
+                      ),
+                      Padding(
+                          padding: const EdgeInsets.only(top: 5.0),
+                          child: Text(
+                            answer,
+                            style: TextStyle(
+                                color: answer == "Correct!"
+                                    ? Colors.green
+                                    : Colors.red,
+                                fontWeight: FontWeight.w900,
+                                fontSize: 16.0),
+                          ))
+                    ],
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Row(children: <Widget>[
+                  Expanded(
+                    child: GestureDetector(
+                      child: Container(
+                        color: const Color(0xff444444),
+                        child: const Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            "Verdadeiro",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.w900),
+                          ),
+                        ),
+                      ),
+                      onTap: () {
+                        if (questions[questionIndex].answer == true) {
+                          setState(() {
+                            questionIndex++;
+                            answer = "Correto!";
+                          });
+                        } else {
+                          setState(() {
+                            questionIndex++;
+                            answer = "Incoreto!";
+                          });
+                        }
+                      },
+                    ),
+                  ),
+                  Expanded(
+                    child: GestureDetector(
+                        child: Container(
+                          color: Colors.red,
+                          child: const Align(
+                            alignment: Alignment.center,
+                            child: Text("Falso",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.w900)),
+                          ),
+                        ),
+                        onTap: () {
+                          if (questions[questionIndex].answer == false) {
+                            setState(() {
+                              questionIndex++;
+                              answer = "Correto!";
+                            });
+                          } else {
+                            setState(() {
+                              questionIndex++;
+                              answer = "Incorreto!";
+                            });
+                          }
+                        }),
+                  )
+                ]),
+              )
+            ],
+          ),
+        ));
+  }
+}
