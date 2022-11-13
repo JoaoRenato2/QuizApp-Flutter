@@ -3,6 +3,7 @@ import 'package:app/auth_controller.dart';
 import 'package:app/constants.dart';
 import 'package:app/controllers/question_paper/data_uploader.dart';
 import 'package:app/firebase_options.dart';
+import 'package:app/selection_quiz.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter App',
       theme: ThemeData(
           primaryColor: kPrimaryColor, scaffoldBackgroundColor: Colors.white),
-      home: WelcomeScreen(),
+      home: SelectionQuiz(),
     );
   }
 }

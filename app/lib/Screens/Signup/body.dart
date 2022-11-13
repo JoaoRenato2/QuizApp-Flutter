@@ -4,6 +4,7 @@ import 'package:app/Screens/Signup/background.dart';
 import 'package:app/auth_controller.dart';
 import 'package:app/components/rounded_button.dart';
 import 'package:app/constants.dart';
+import 'package:app/selection_quiz.dart';
 import 'package:app/validation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -12,6 +13,8 @@ class Body extends StatelessWidget {
   final Widget child;
   final _formKey = GlobalKey<FormState>();
   final Validation validar = Validation();
+  bool error = false;
+  String snackBar1 = "a";
 
   Body({super.key, required this.child});
   @override
@@ -50,7 +53,6 @@ class Body extends StatelessWidget {
                           color: kPrimaryLightColor.withOpacity(0.2))
                     ]),
                 child: TextFormField(
-                  validator: (email) => validar.campoEmail(email.toString()),
                   controller: emailController,
                   decoration: InputDecoration(
                     hintText: "Email",
@@ -69,6 +71,28 @@ class Body extends StatelessWidget {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30)),
                   ),
+                  validator: (email) {
+                    if (email!.isEmpty) {
+                      snackBar1 = "Entre com seu email";
+
+                      error = true;
+                      return null;
+                    }
+                    if (!email.contains('@')) {
+                      snackBar1 =
+                          "O email deve ser por exemplo seu-nome@mail.com";
+
+                      error = true;
+                      return null;
+                    }
+                    if (email.length < 3) {
+                      snackBar1 = "E-mail em formato inadequado";
+
+                      error = true;
+                      return null;
+                    }
+                    return null;
+                  },
                 ),
               ),
             ),
@@ -108,7 +132,19 @@ class Body extends StatelessWidget {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30)),
                   ),
-                  validator: (senha) => validar.campoSenha(senha.toString()),
+                  validator: (senha) {
+                    if (senha == null || senha.isEmpty) {
+                      snackBar1 = "Entre com sua senha";
+                      error = true;
+                      return null;
+                    }
+                    if (senha!.length < 6) {
+                      snackBar1 = "A senha deve ter no mínimo 6 dígitos";
+                      error = true;
+                      return null;
+                    }
+                    return null;
+                  },
                 ),
               ),
             ),
@@ -118,15 +154,30 @@ class Body extends StatelessWidget {
             RoundedButton(
               text: "SIGNUP",
               press: () {
-                if (_formKey.currentState!.validate()) {
+                _formKey.currentState!.validate();
+                if (error == false) {
                   AuthController.instance.register(emailController.text.trim(),
                       passwordController.text.trim());
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(content: Text('Usuario Criado')),
                   );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return SelectionQuiz();
+                      },
+                    ),
+                  );
+                } else {
+                  final sn = SnackBar(
+                    content: Text(snackBar1, textAlign: TextAlign.center),
+                    backgroundColor: Colors.red,
+                    behavior: SnackBarBehavior.floating,
+                  );
+
+                  ScaffoldMessenger.of(context).showSnackBar(sn);
                 }
-                AuthController.instance.register(emailController.text.trim(),
-                    passwordController.text.trim());
               },
             ),
             AlreadyHaveAnAccountCheck(

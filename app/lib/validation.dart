@@ -1,4 +1,4 @@
-class Validation {
+class Validation  {
   String? campoEmail(String email) {
     if (email.isEmpty) {
       return 'Entre com seu e-mail';
