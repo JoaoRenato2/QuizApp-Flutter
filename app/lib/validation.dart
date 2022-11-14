@@ -1,4 +1,4 @@
-class Validation  {
+class Validation {
   String? campoEmail(String email) {
     if (email.isEmpty) {
       return 'Entre com seu e-mail';
@@ -17,7 +17,7 @@ class Validation  {
       return 'Entre com sua senha';
     }
     if (senha.length < 6) {
-      return 'A senha deve ter no mínimo 4 dígitos';
+      return 'O tamanho da senha está incorreto';
     }
     return null;
   }

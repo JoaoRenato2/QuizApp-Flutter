@@ -4,7 +4,7 @@ import 'package:app/Screens/Signup/background.dart';
 import 'package:app/auth_controller.dart';
 import 'package:app/components/rounded_button.dart';
 import 'package:app/constants.dart';
-import 'package:app/selection_quiz.dart';
+import 'package:app/Screens/Quiz/selection_quiz.dart';
 import 'package:app/validation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -157,17 +157,9 @@ class Body extends StatelessWidget {
                 _formKey.currentState!.validate();
                 if (error == false) {
                   AuthController.instance.register(emailController.text.trim(),
-                      passwordController.text.trim());
+                      passwordController.text.trim(), context);
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(content: Text('Usuario Criado')),
-                  );
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return SelectionQuiz();
-                      },
-                    ),
                   );
                 } else {
                   final sn = SnackBar(

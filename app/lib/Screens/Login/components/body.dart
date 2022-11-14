@@ -4,9 +4,12 @@ import 'package:app/auth_controller.dart';
 import 'package:app/components/rounded_button.dart';
 import 'package:app/constants.dart';
 import 'package:app/validation.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../../Quiz/selection_quiz.dart';
 
 class Body extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
@@ -129,13 +132,10 @@ class Body extends StatelessWidget {
                       // AuthController.instance.register(
                       //     emailController.text.trim(),
                       //     passwordController.text.trim());
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Usuario Criado')),
-                      );
+
+                      AuthController.instance.login(emailController.text.trim(),
+                          passwordController.text.trim(), context);
                     }
-                    AuthController.instance.register(
-                        emailController.text.trim(),
-                        passwordController.text.trim());
                   },
                 ),
                 AlreadyHaveAnAccountCheck(

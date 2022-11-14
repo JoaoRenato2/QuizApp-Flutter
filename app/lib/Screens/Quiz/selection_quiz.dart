@@ -1,5 +1,6 @@
 import 'package:app/Screens/Login/components/backgorund.dart';
 import 'package:app/Screens/Quiz/quiz.dart';
+import 'package:app/auth_controller.dart';
 import 'package:app/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -68,20 +69,21 @@ class SelectionQuiz extends StatelessWidget {
             backgroundColor: const Color.fromARGB(255, 229, 219, 236),
             child: ListView(
               children: [
-                const UserAccountsDrawerHeader(
-                    accountName: Text('Seu nome e sobrenome'),
-                    accountEmail: Text('seuemail@mail.com'),
-                    currentAccountPicture: CircleAvatar(
+                UserAccountsDrawerHeader(
+                    accountName: const Text('Nome'),
+                    accountEmail: Text(AuthController.instance.getEmail()),
+                    currentAccountPicture: const CircleAvatar(
                       backgroundImage: NetworkImage(
                           'https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331256_960_720.png'),
                     ),
-                    decoration: BoxDecoration(color: kPrimaryColor)),
+                    decoration: const BoxDecoration(color: kPrimaryColor)),
                 ListTile(
                   leading: const Icon(Icons.exit_to_app),
                   title: const Text("Logout"),
                   trailing: const Icon(Icons.arrow_forward),
                   onTap: () {
                     print("Logout");
+                    AuthController.instance.logOut(context);
                   },
                 ),
               ],
@@ -423,7 +425,9 @@ class _SettingsPageUiState extends State<SettingsPageUi> {
                     padding: const EdgeInsets.symmetric(horizontal: 40),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20))),
-                onPressed: () {},
+                onPressed: () {
+                  AuthController.instance.logOut(context);
+                },
                 child: const Text(
                   "SIGN OUT",
                   style: TextStyle(

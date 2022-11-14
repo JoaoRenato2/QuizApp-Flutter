@@ -11,11 +11,12 @@ class Quiz extends StatefulWidget {
 
 class _Quiz extends State<Quiz> {
   List<Question> questions = [
-    Question("Porcos podem voar?", false),
-    Question("Bill Gates é o fundador da Microsoft", true),
-    Question("Cachorros tem 6 pernas", false),
-    Question("Pássaros tem 2 asas", true),
-    Question("Golfinhos não enxergam", false),
+    Question("Flutter é uma linguagem de programação", false),
+    Question("Dart veio para competir com o javascript", true),
+    Question("Dart é bom", false),
+    Question("Dart foi criado pela Google", true),
+    Question("NullException tem alguma utilidade", true),
+    Question("O Widget Scaffold engloba o Widget Container", true)
   ];
 
   int questionIndex = 0;
@@ -60,7 +61,7 @@ class _Quiz extends State<Quiz> {
                           child: Text(
                             answer,
                             style: TextStyle(
-                                color: answer == "Correct!"
+                                color: answer == "Correto!"
                                     ? Colors.green
                                     : Colors.red,
                                 fontWeight: FontWeight.w900,
@@ -90,13 +91,17 @@ class _Quiz extends State<Quiz> {
                       onTap: () {
                         if (questions[questionIndex].answer == true) {
                           setState(() {
-                            questionIndex++;
+                            if (questionIndex + 1 < questions.length) {
+                              questionIndex++;
+                            }
                             answer = "Correto!";
                           });
                         } else {
                           setState(() {
-                            questionIndex++;
-                            answer = "Incoreto!";
+                            if (questionIndex + 1 < questions.length) {
+                              questionIndex++;
+                            }
+                            answer = "Incorreto!";
                           });
                         }
                       },
@@ -118,12 +123,16 @@ class _Quiz extends State<Quiz> {
                         onTap: () {
                           if (questions[questionIndex].answer == false) {
                             setState(() {
-                              questionIndex++;
+                              if (questionIndex + 1 < questions.length) {
+                                questionIndex++;
+                              }
                               answer = "Correto!";
                             });
                           } else {
                             setState(() {
-                              questionIndex++;
+                              if (questionIndex + 1 < questions.length) {
+                                questionIndex++;
+                              }
                               answer = "Incorreto!";
                             });
                           }
