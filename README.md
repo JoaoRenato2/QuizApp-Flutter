@@ -64,4 +64,8 @@ Abra um pull request. </p>
 
 <a href="https://github.com/JoaoRenato2">João Renato</a>
 
+<a href="https://github.com/KhadaKing">Gustavo Oliveira</a>
+
+
+
 
