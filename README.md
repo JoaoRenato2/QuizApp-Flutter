@@ -61,6 +61,7 @@ Abra um pull request. </p>
 
 ## 🧑 Equipe
 <a href="https://github.com/PedroSad1">Pedro Sad</a>
+
 <a href="https://github.com/JoaoRenato2">João Renato</a>
 
 
