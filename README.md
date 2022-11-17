@@ -66,7 +66,7 @@ Abra um pull request. </p>
 
 <a href="https://github.com/KhadaKing">Gustavo Oliveira</a>
 
-<a href="https://github.com/luviotti">Gustavo Oliveira</a>
+<a href="https://github.com/luviotti">Luisa Viotti</a>
 
 
 
