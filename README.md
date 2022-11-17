@@ -58,3 +58,9 @@ Abra um pull request. </p>
 - [x] Flutter
 - [x] Firebase
 
+
+## 🧑 Equipe
+<a href="https://github.com/PedroSad1">Pedro Sad</a>
+<a href="https://github.com/JoaoRenato2">João Renato</a>
+
+
